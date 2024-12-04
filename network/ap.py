@@ -1,5 +1,4 @@
 import subprocess
-from system.config import get_env_variable
 from system.constants import NMCLI_GET_CONNECTION_SSID_AND_PASSWORD, NMCLI_PASSWORD_KEY, NMCLI_SSID_KEY, WIRELESS_CONNECTION
 
 
@@ -12,7 +11,7 @@ def get_ap_ssid_and_password() -> dict:
     """
     try:
         # Get the wireless connection name from the environment
-        connection_name = get_env_variable(WIRELESS_CONNECTION)
+        connection_name = WIRELESS_CONNECTION
 
         # Run the nmcli command to get the AP information
         command = NMCLI_GET_CONNECTION_SSID_AND_PASSWORD.format(connection_name)

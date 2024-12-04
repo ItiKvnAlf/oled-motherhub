@@ -1,7 +1,6 @@
 import display.config as config
 import time
-from system.config import get_env_variable
-from system.constants import WIRELESS_CONNECTION
+from system.constants import BRIDGE_CONNECTION
 from utils.get_ip import get_ip_address
 
 def update_ip():
@@ -10,8 +9,8 @@ def update_ip():
     """
     # Continuously check for changes in the ethernet IP address
     while True:
-        current_ip = get_ip_address(get_env_variable(WIRELESS_CONNECTION))['ip']
-        current_mask = get_ip_address(get_env_variable(WIRELESS_CONNECTION))['mask']
+        current_ip = get_ip_address(BRIDGE_CONNECTION)['ip']
+        current_mask = get_ip_address(BRIDGE_CONNECTION)['mask']
         # Update IP in db if it has changed
         if config.data['mh']["ip"] != current_ip:
             config.data['mh']["ip"] = current_ip
