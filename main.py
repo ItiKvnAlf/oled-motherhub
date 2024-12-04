@@ -28,12 +28,22 @@ time.sleep(2)
 
 # Main loop
 try:
+    # Get IP address and mask
+    full_ip = get_ip_address(BRIDGE_CONNECTION)
+    ip = full_ip['ip']
+    mask = full_ip['mask']
+
+    # Get SSID and password
+    ap = get_ap_ssid_and_password()
+    ssid = ap['ssid']
+    password = ap['password']
+
     # Update global data
     config.data['mh'] = {
-        'ip': get_ip_address(BRIDGE_CONNECTION)['ip'],
-        'ssid': get_ap_ssid_and_password()['ssid'],
-        'password': get_ap_ssid_and_password()['password'],
-        'mask': get_ip_address(BRIDGE_CONNECTION)['mask'],
+        'ip': ip,
+        'ssid': ssid,
+        'password': password,
+        'mask': mask,
         'linked': 0
     }
 
@@ -42,6 +52,7 @@ try:
     if ip and mask:
         network = calculate_network(ip, mask)
         config.data['dbs'] = refresh_daughters(network)
+        config.data['mh']['linked'] = len(config.data['dbs'])
 
     display_current_menu()
 

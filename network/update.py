@@ -9,8 +9,10 @@ def update_ip():
     """
     # Continuously check for changes in the ethernet IP address
     while True:
-        current_ip = get_ip_address(BRIDGE_CONNECTION)['ip']
-        current_mask = get_ip_address(BRIDGE_CONNECTION)['mask']
+        full_ip = get_ip_address(BRIDGE_CONNECTION, True)
+        current_ip = full_ip['ip']
+        current_mask = full_ip['mask']
+
         # Update IP in db if it has changed
         if config.data['mh']["ip"] != current_ip:
             config.data['mh']["ip"] = current_ip

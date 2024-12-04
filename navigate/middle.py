@@ -63,12 +63,17 @@ def push_button():
         mask = config.data['mh']['mask']
         network = calculate_network(ip, mask)
         config.data['dbs'] = refresh_daughters(network)
+        config.data['mh']['linked'] = len(config.data['dbs'])
     elif current_state == "no_ip":
-        config.data['mh']["ip"] = get_ip_address(BRIDGE_CONNECTION)['ip']
-        config.data['mh']["mask"] = get_ip_address(BRIDGE_CONNECTION)['mask']
+        full_ip = get_ip_address(BRIDGE_CONNECTION)
+        ip= full_ip['ip']
+        mask = full_ip['mask']
+        config.data['mh']["ip"] = ip
+        config.data['mh']["mask"] = mask
         if config.data['mh']['ip'] and config.data['mh']['mask']:
             network = calculate_network(config.data['mh']['ip'], config.data['mh']['mask'])
             config.data['dbs'] = refresh_daughters(network)
+            config.data['mh']['linked'] = len(config.data['dbs'])
             config.data['current_state'] = "daughters_info"
         else:
             config.data['current_state'] = "no_ip"
