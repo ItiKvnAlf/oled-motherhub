@@ -74,8 +74,8 @@ def system_change_mode_view():
     """
     Display the confirm system change mode view.
     """
-    text1 = "Change MODE to"
-    text2 = "DAUGHTER BOX?"
+    text1 = "Change MODE  to"
+    text2 = "DAUGHTER  BOX?"
     draw.text((center_text(text1), 0), text1, font=font, fill=255)
     draw.text((center_text(text2), 10), text2, font=font, fill=255)
 

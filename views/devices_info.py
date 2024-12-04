@@ -37,8 +37,8 @@ def mother_info_password_view():
     if config.data['reveal_password'] == True:
         text1 = f"PASS: {password}"
         text2 = "PUSH to hide"
-        draw.text((center_text(text1), 5), text1, font=font, fill=255)
-        draw.text((center_text(text2), 20), text2, font=font, fill=255)
+        draw.text((center_text(text1) - 8, 5), text1, font=font, fill=255)
+        draw.text((center_text(text2) - 8, 20), text2, font=font, fill=255)
     else:
         text1 = "PASS: ********"
         text2 = "PUSH to reveal"
