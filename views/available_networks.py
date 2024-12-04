@@ -19,7 +19,7 @@ def daughters_detected_view():
     ip = item["ip"]
     page = f"({config.data['current_index']+1}/{len(config.data['dbs'])})"
 
-    draw.text((0, 5), f"DAUGHTER IP {page}: ", font=font, fill=255)
+    draw.text((0, 0), f"DAUGHTER IP {page}: ", font=font, fill=255)
     draw.text((10, 15), ip, font=font, fill=255)
 
 def no_daughters_view():
