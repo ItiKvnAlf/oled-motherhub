@@ -12,6 +12,9 @@ def mother_info_view():
     if ssid == None:
         ssid = "N/A"
 
+    if ip == None:
+        ip = "N/A"
+
     if linked > 1:
         linked = f"{linked} DBs"
     elif linked == 0:
@@ -24,7 +27,7 @@ def mother_info_view():
     draw.text((0, 20), f"LINKED TO: {linked}", font=font, fill=255)
 
     max_width = (width - (draw.textlength("SSID: ")))
-    x_pos = (draw.textlength("SSID: "))
+    x_pos = (draw.textlength("SSID: ")) + 8
     start_scrolling_text(config.data['current_state'], config.data['current_index'], f"{ssid}", max_width, x_pos, 0)
 
 def mother_info_password_view():

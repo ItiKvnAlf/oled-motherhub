@@ -1,5 +1,6 @@
 import subprocess
 
+from display import config
 from system.constants import NMCLI_GET_IP4_ADDRESS
 
 def get_ip_address(connection: str) -> dict:
@@ -11,10 +12,6 @@ def get_ip_address(connection: str) -> dict:
 
     Returns:
         dict: A dictionary containing the IP address and subnet mask with the key 'ip'.
-
-    Raises:
-        RuntimeError: If the command to fetch network details fails.
-        ValueError: If the IP address and mask cannot be found.
     """
 
     command = NMCLI_GET_IP4_ADDRESS.format(connection)
@@ -22,7 +19,7 @@ def get_ip_address(connection: str) -> dict:
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     if result.returncode != 0:
-        raise RuntimeError(f"Failed to execute command '{command}'. Error: {result.stderr}")
+        print(f"Failed to execute command '{command}'. Error: {result.stderr}")
 
     ip, mask = None, None
 
@@ -32,6 +29,6 @@ def get_ip_address(connection: str) -> dict:
         ip, mask = ip_mask.split('/')
 
     if ip is None or mask is None:
-        raise ValueError("Could not find the IP address and mask for the connection 'AP'.")
+        print(f"Failed to find IP address and mask in output: {result.stdout}")
 
     return {'ip': ip, 'mask': mask}

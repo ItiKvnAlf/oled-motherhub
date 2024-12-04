@@ -18,7 +18,7 @@ def get_ap_ssid_and_password() -> dict:
         result = subprocess.run(command, shell=True, capture_output=True, text=True, check=True)
 
         if result.returncode != 0:
-            raise RuntimeError(f"Failed to execute command '{command}'. Error: {result.stderr}")
+            print(f"Failed to execute command '{command}'. Error: {result.stderr}")
 
         # Parse the output to get SSID and password
         ap_info = {}

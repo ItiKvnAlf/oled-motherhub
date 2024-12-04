@@ -29,3 +29,9 @@ def no_daughters_view():
     draw.text((center_text(text1), 0), text1, font=font, fill=255)
     draw.text((center_text(text2), 10), text2, font=font, fill=255)
     draw.text((center_text(text3), 20), text3, font=font, fill=255)
+
+def no_ip_view():
+    text1 = "NO IP ADDRESS"
+    text2 = "DETECTED"
+    draw.text((center_text(text1), 5), text1, font=font, fill=255)
+    draw.text((center_text(text2), 15), text2, font=font, fill=255)

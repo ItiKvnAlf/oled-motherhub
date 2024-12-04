@@ -13,7 +13,7 @@ def navigate_up():
                 config.data['selected_button'] -= 1
             else:
                 config.data['selected_button'] = len(config.data['system_config_options']) - 1
-    elif current_state == "no_daughters" or current_state == "daughters_info":
+    elif current_state == "no_daughters" or current_state == "daughters_info" or current_state == "no_ip":
         config.data['current_state'] = "menu"
     elif current_state == "daughters_detected":
         config.data['current_state'] = "daughters_info"

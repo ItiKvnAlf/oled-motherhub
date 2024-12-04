@@ -9,10 +9,13 @@ def navigate_down():
     daughters = config.data['dbs']
     
     if current_state == "menu":
-        if len(daughters) > 0:
-            config.data['current_state'] = "daughters_info"
+        if config.data['mh']['ip'] is not None:
+            if len(daughters) > 0:
+                config.data['current_state'] = "daughters_info"
+            else:
+                config.data['current_state'] = "no_daughters"
         else:
-            config.data['current_state'] = "no_daughters"
+            config.data['current_state'] = "no_ip"
     elif current_state == "config":
         if selected_digit_index == 0:
             if selected_button < len(config.data['system_config_options']) - 1:

@@ -87,6 +87,9 @@ def draw_icons_bottom_right():
         set_icon_bottom_right('up')
         set_icon_bottom_right('middle')
 
+    elif config.data['current_state'] == "no_ip":  # No IP Address
+        set_icon_bottom_right('up')
+
     elif config.data['current_state'] == "daughters_info":  # Daughters list
         set_icon_bottom_right('up')
         set_icon_bottom_right('down')
