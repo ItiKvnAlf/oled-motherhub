@@ -24,8 +24,8 @@ def daughters_detected_view():
 
 def no_daughters_view():
     text1 = "NO DAUGHTERS"
-    text2 = "FOUND"
-    text3 = "Push to refresh"
+    text2 = "DETECTED"
+    text3 = "Push to scan"
     draw.text((center_text(text1), 0), text1, font=font, fill=255)
     draw.text((center_text(text2), 10), text2, font=font, fill=255)
     draw.text((center_text(text3), 20), text3, font=font, fill=255)
@@ -34,6 +34,18 @@ def no_ip_view():
     text1 = "NO IP ADDRESS"
     text2 = "FOUND"
     text3 = "Push to refresh"
+    draw.text((center_text(text1), 0), text1, font=font, fill=255)
+    draw.text((center_text(text2), 10), text2, font=font, fill=255)
+    draw.text((center_text(text3), 20), text3, font=font, fill=255)
+
+def ip_found_view():
+    item = config.data['mh']
+    ip = item['ip']
+    mask = item['mask']
+
+    text1 = "IP FOUND"
+    text2 = f"({ip}/{mask})"
+    text3 = "Push to continue"
     draw.text((center_text(text1), 0), text1, font=font, fill=255)
     draw.text((center_text(text2), 10), text2, font=font, fill=255)
     draw.text((center_text(text3), 20), text3, font=font, fill=255)

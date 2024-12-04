@@ -2,7 +2,7 @@ import time
 import display.config as config
 from display.icons import draw_icons_bottom_right
 from utils.screen import blank_screen, display_screen
-from views.available_networks import daughters_detected_view, daughters_info_view, no_daughters_view, no_ip_view
+from views.available_networks import daughters_detected_view, daughters_info_view, ip_found_view, no_daughters_view, no_ip_view
 from views.confirm import confirm_view
 from views.devices_info import mother_info_password_view, mother_info_view, mother_info_view
 from views.main_menu import menu_view
@@ -37,6 +37,8 @@ def display_current_menu():
         no_daughters_view()
     elif current_state == "no_ip":
         no_ip_view()
+    elif current_state == "ip_found":
+        ip_found_view()
 
     if current_state != "info_mh":
         display_screen()

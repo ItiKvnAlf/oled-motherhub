@@ -91,6 +91,9 @@ def draw_icons_bottom_right():
         set_icon_bottom_right('up')
         set_icon_bottom_right('middle')
 
+    elif config.data['current_state'] == "ip_found":  # IP Address found
+        set_icon_bottom_right('middle')
+
     elif config.data['current_state'] == "daughters_info":  # Daughters list
         set_icon_bottom_right('up')
         set_icon_bottom_right('down')
