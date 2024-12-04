@@ -19,7 +19,8 @@ def refresh_daughters(network: str) -> list:
               Example: [{"ip": "192.168.1.1", "mac": "B8:27:EB:AA:BB:CC"}, ...]
     """
     # Display the scanning daughters view if the current state is daughters_info or no_daughters
-    if config.data['current_state'] == "daughters_info" or config.data['current_state'] == "no_daughters":
+    state = config.data['current_state']
+    if state == "daughters_info" or state == "no_daughters" or state == "ip_found":
         scanning_daughters_view()
         time.sleep(1)
         

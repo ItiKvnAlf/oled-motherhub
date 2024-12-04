@@ -58,12 +58,16 @@ def push_button():
         elif selected_confirm_button == 0:
             config.data['selected_confirm_button'] = 0
             config.data['current_state'] = "system_change_mode"
-    elif current_state == "daughters_info" or current_state == "no_daughters":
+    elif current_state == "daughters_info" or current_state == "no_daughters" or current_state == "ip_found":
         ip = config.data['mh']['ip']
         mask = config.data['mh']['mask']
         network = calculate_network(ip, mask)
         config.data['dbs'] = refresh_daughters(network)
         config.data['mh']['linked'] = len(config.data['dbs'])
+        if config.data['mh']['linked'] > 0:
+            config.data['current_state'] = "daughters_info"
+        else:
+            config.data['current_state'] = "no_daughters"
     elif current_state == "no_ip":
         full_ip = get_ip_address(BRIDGE_CONNECTION)
         ip= full_ip['ip']
@@ -72,9 +76,4 @@ def push_button():
         config.data['mh']["mask"] = mask
         if config.data['mh']['ip'] and config.data['mh']['mask']:
             config.data['current_state'] = "ip_found"
-    elif current_state == "ip_found":
-        if config.data['mh']['linked'] > 0:
-                config.data['current_state'] = "daughters_info"
-        else:
-            config.data['current_state'] = "no_daughters"
     display_current_menu()
