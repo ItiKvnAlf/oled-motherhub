@@ -2,7 +2,9 @@ import time
 import display.config as config
 from display.menu import display_current_menu
 
+from system.constants import BRIDGE_CONNECTION
 from utils.calculate_network import calculate_network
+from utils.get_ip import get_ip_address
 from utils.refresh import refresh_daughters
 from system.actions import change_mode, reboot_system, shutdown_system
 
@@ -61,4 +63,13 @@ def push_button():
         mask = config.data['mh']['mask']
         network = calculate_network(ip, mask)
         config.data['dbs'] = refresh_daughters(network)
+    elif current_state == "no_ip":
+        config.data['mh']["ip"] = get_ip_address(BRIDGE_CONNECTION)['ip']
+        config.data['mh']["mask"] = get_ip_address(BRIDGE_CONNECTION)['mask']
+        if config.data['mh']['ip'] and config.data['mh']['mask']:
+            network = calculate_network(config.data['mh']['ip'], config.data['mh']['mask'])
+            config.data['dbs'] = refresh_daughters(network)
+            config.data['current_state'] = "daughters_info"
+        else:
+            config.data['current_state'] = "no_ip"
     display_current_menu()

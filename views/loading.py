@@ -43,3 +43,10 @@ def scanning_daughters_view():
     draw.text((center_text(text1), 5), text1, font=font, fill=255)
     draw.text((center_text(text2), 15), text2, font=font, fill=255)
     display_screen()
+
+def getting_ip_view():
+    """Display the getting IP view."""
+    text1 = "REFRESHING..."
+    blank_screen()
+    draw.text((center_text(text1), 10), text1, font=font, fill=255)
+    display_screen()

@@ -1,7 +1,9 @@
 import subprocess
+import time
 
 from display import config
 from system.constants import NMCLI_GET_IP4_ADDRESS
+from views.loading import getting_ip_view
 
 def get_ip_address(connection: str) -> dict:
     """
@@ -13,6 +15,10 @@ def get_ip_address(connection: str) -> dict:
     Returns:
         dict: A dictionary containing the IP address and subnet mask with the key 'ip'.
     """
+    # Display the scanning daughters view if the current state is no_ip
+    if config.data['current_state'] == "no_ip":
+        getting_ip_view()
+        time.sleep(1)
 
     command = NMCLI_GET_IP4_ADDRESS.format(connection)
 
