@@ -23,11 +23,11 @@ def mother_info_view():
         linked = f"{linked} DB"
 
     draw.text((0, 0), f"SSID: ", font=font, fill=255)
-    draw.text((0, 10), f"IP:{ip}", font=font, fill=255)
+    draw.text((0, 10), f"IP: {ip}", font=font, fill=255)
     draw.text((0, 20), f"LINKED TO: {linked}", font=font, fill=255)
 
     max_width = (width - (draw.textlength("SSID: ")))
-    x_pos = (draw.textlength("SSID: ")) + 8
+    x_pos = (draw.textlength("SSID: "))
     start_scrolling_text(config.data['current_state'], config.data['current_index'], f"{ssid}", max_width, x_pos, 0)
 
 def mother_info_password_view():
