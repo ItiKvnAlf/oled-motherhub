@@ -64,6 +64,8 @@ def push_button():
         network = calculate_network(ip, mask)
         config.data['dbs'] = refresh_daughters(network)
         config.data['mh']['linked'] = len(config.data['dbs'])
+        if current_state == "no_daughters" and config.data['mh']['linked'] > 0:
+            config.data['current_state'] = "daughters_info"
     elif current_state == "no_ip":
         full_ip = get_ip_address(BRIDGE_CONNECTION)
         ip= full_ip['ip']
