@@ -5,7 +5,7 @@ from system.constants import BRIDGE_CONNECTION
 from utils.calculate_network import calculate_network
 from utils.refresh import refresh_daughters
 from display.menu import display_current_menu
-from network.update import update_ip
+from network.update import update_ip, update_ssid_and_password
 from inputs.buttons import handle_buttons, setup_buttons
 from utils.screen import blank_screen, display_screen
 from utils.threading import start_thread
@@ -58,6 +58,7 @@ try:
 
     # Start thread
     start_thread(update_ip)
+    start_thread(update_ssid_and_password)
 
     while True:
         time.sleep(0.1)
